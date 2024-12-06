@@ -161,5 +161,27 @@ namespace AdventOfCode
         {
             return Regex.Replace(str, @"\s+", "");
         }
-    }    
+    }
+
+    public static class ListExtensions
+    {
+        public static int FindIndexOfFirstValueLessThan<T>(this List<T> sortedList, T value, IComparer<T> comparer = null)
+        {
+            var index = sortedList.BinarySearch(value, comparer);
+
+            // The value was found in the list. Just return its index.
+            if (index >= 0)
+                return index;
+
+            // The value was not found and "~index" is the index of the next value greater than the search value.
+            index = ~index;
+
+            // There are values in the list less than the search value. Return the index of the closest one.
+            if (index > 0)
+                return index - 1;
+
+            // All values in the list are greater than the search value.
+            return -1;
+        }
+    }
 }
