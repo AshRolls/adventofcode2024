@@ -161,6 +161,17 @@ namespace AdventOfCode
         {
             return Regex.Replace(str, @"\s+", "");
         }
+
+        public static Tuple<int, int>[] Dirs = {
+            new Tuple<int, int>(0, 1),
+            new Tuple<int, int>(1, 1),
+            new Tuple<int, int>(1, 0),
+            new Tuple<int, int>(1, -1),
+            new Tuple<int, int>(0, -1),
+            new Tuple<int, int>(-1, -1),
+            new Tuple<int, int>(-1, 0),
+            new Tuple<int, int>(-1, 1)
+        };
     }
 
     public static class ListExtensions
